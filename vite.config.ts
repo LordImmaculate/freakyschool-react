@@ -10,6 +10,8 @@ export default defineConfig({
       entry: "src/main.tsx",
       userscript: {
         name: "FreakySchool",
+        author: "LordImmaculate, Babstiaan",
+        source: "https://github.com/lordimmaculate/freakyschool-react",
         icon: "https://vitejs.dev/logo.svg",
         namespace: "lordimmaculate",
         match: ["https://*.smartschool.be/*"],
