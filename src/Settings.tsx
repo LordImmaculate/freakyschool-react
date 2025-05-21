@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useLocalStorage } from "usehooks-ts";
+import Menu from "./components/Menu";
 
 export default function Settings({
   closeSettings
@@ -47,8 +48,8 @@ export default function Settings({
   }
 
   return (
-    <div className="flex flex-col fixed top-72 left-1/2 transform -translate-x-1/2 w-7xl py-4 bg-white text-black border rounded-3xl items-center justify-center gap-4">
-      <h1>FreakySchool Instellingen</h1>
+    <Menu>
+      <h1 className="text-2xl font-bold">FreakySchool Instellingen</h1>
       <div className="flex flex-col gap-1 items-stretch">
         <label htmlFor="color" className="text-sm">
           Kleur van de header (CSS kleur of hex code):
@@ -120,6 +121,6 @@ export default function Settings({
       <p className="text-xs">
         Voor sommige instellingen te laten toepassen moet je refreshen
       </p>
-    </div>
+    </Menu>
   );
 }

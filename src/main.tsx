@@ -17,7 +17,6 @@ ReactDOM.createRoot(
 
 ReactDOM.createRoot(
   (() => {
-    const topnav = document.querySelector(".topnav");
     const settingsDiv = document.createElement("div");
     return settingsDiv;
   })()
