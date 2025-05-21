@@ -8,8 +8,9 @@ Dit userscript voegt enkele handige features toe aan SmartSchool waaronder:
 - Timer voor lesuur
 
 Om te installeren heb je een userscript manager nodig. Wij raden TamperMonkey aan.
-[Chrome](https://chromewebstore.google.com/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo)
-[FireFox](https://addons.mozilla.org/en-US/firefox/addon/tampermonkey/)
+
+- [Chrome](https://chromewebstore.google.com/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo)
+- [FireFox](https://addons.mozilla.org/en-US/firefox/addon/tampermonkey/)
 
 Als je dit hebt gedownload ga naar [Releases](https://github.com/LordImmaculate/freakyschool-react/releases) en download de laatste versie.
 
