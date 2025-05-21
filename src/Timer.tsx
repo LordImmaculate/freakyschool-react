@@ -3,7 +3,11 @@ import { useLocalStorage } from "usehooks-ts";
 
 export default function Timer() {
   const [timer, setTimer] = useState("");
-  const [backgroundColor] = useLocalStorage("color", "blue");
+  const [backgroundColor] = useLocalStorage("color", "#ff520e");
+
+  const [showTimer] = useLocalStorage("timer", true);
+
+  if (!showTimer) return null;
 
   const timetable = [
     { start: "08:30", end: "09:20" },
@@ -13,7 +17,7 @@ export default function Timer() {
     { start: "13:00", end: "13:50" },
     { start: "13:50", end: "14:40" },
     { start: "14:50", end: "15:40" },
-    { start: "15:40", end: "22:00" }
+    { start: "15:40", end: "16:30" }
   ];
 
   function parseTimeToDate(timeStr: string) {

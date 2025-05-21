@@ -31,6 +31,10 @@ export default function Settings({
   );
   const [newSrc, setNewSrc] = useState(newSrcValue);
 
+  const [timerValue, setTimerValue] = useLocalStorage("timer", true);
+
+  const [timer, setTimer] = useState(timerValue);
+
   function saveSettings() {
     if (color == "") removeColorValue();
     else setColorValue(color);
@@ -43,6 +47,8 @@ export default function Settings({
 
     if (newSrc == "") removeNewSrcValue();
     else setNewSrcValue(newSrc);
+
+    setTimerValue(timer);
 
     closeSettings();
   }
@@ -103,6 +109,20 @@ export default function Settings({
           className="border border-gray-300 rounded-lg p-2 mt-4"
           placeholder="Plak hier de nieuwe src van je pfp"
         />
+        <div className="flex flex-row gap-1 items-center">
+          <label htmlFor="timer" className="text-sm">
+            Timer:
+          </label>
+          <input
+            id="timer"
+            type="button"
+            value={timer ? "Aan" : "Uit"}
+            onClick={() => {
+              setTimer(!timer);
+            }}
+            className="border border-gray-300 rounded-lg p-2 mt-4"
+          />
+        </div>
       </div>
       <div className="flex flex-row gap-2">
         <button
