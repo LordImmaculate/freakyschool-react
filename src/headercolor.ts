@@ -9,5 +9,5 @@ export default function headerColor() {
     if (header instanceof HTMLElement) {
       header.style.backgroundColor = color ?? "";
     }
-  }, []);
+  }, [color]);
 }

@@ -6,37 +6,120 @@ export default function Settings({
 }: {
   closeSettings: () => void;
 }) {
-  const [value, setValue, removeValue] = useLocalStorage("color", "");
-  const [color, setColor] = useState(value);
+  const [colorValue, setColorValue, removeColorValue] = useLocalStorage(
+    "color",
+    ""
+  );
+  const [color, setColor] = useState(colorValue);
 
-  function buttonClick() {
-    if (color == "") removeValue();
-    else setValue(color);
+  const [nameValue, setNameValue, removeNameValue] = useLocalStorage(
+    "name",
+    ""
+  );
+  const [name, setName] = useState(nameValue);
 
-    alert(
-      "Instellingen zijn opgeslagen, refresh de pagina om de veranderingen te zien"
-    );
+  const [oldSrcValue, setOldSrcValue, removeOldSrcValue] = useLocalStorage(
+    "oldSrc",
+    ""
+  );
+  const [oldSrc, setOldSrc] = useState(oldSrcValue);
+
+  const [newSrcValue, setNewSrcValue, removeNewSrcValue] = useLocalStorage(
+    "newSrc",
+    ""
+  );
+  const [newSrc, setNewSrc] = useState(newSrcValue);
+
+  function saveSettings() {
+    if (color == "") removeColorValue();
+    else setColorValue(color);
+
+    if (name == "") removeNameValue();
+    else setNameValue(name);
+
+    if (oldSrc == "") removeOldSrcValue();
+    else setOldSrcValue(oldSrc);
+
+    if (newSrc == "") removeNewSrcValue();
+    else setNewSrcValue(newSrc);
+
     closeSettings();
   }
 
   return (
-    <div className="flex flex-col fixed top-72 left-1/2 transform -translate-x-1/2 w-7xl h-96 bg-white text-black border rounded-3xl items-center justify-center">
+    <div className="flex flex-col fixed top-72 left-1/2 transform -translate-x-1/2 w-7xl py-4 bg-white text-black border rounded-3xl items-center justify-center gap-4">
       <h1>FreakySchool Instellingen</h1>
-      <input
-        type="text"
-        value={color}
-        onChange={(e) => {
-          setColor(e.target.value);
-        }}
-        className="border border-gray-300 rounded-lg p-2 mt-4"
-        placeholder="Type hier de kleur die je wilt"
-      />
-      <button
-        className="bg-red-500 text-white px-4 py-2 rounded mt-4"
-        onClick={() => buttonClick()}
-      >
-        Close
-      </button>
+      <div className="flex flex-col gap-1 items-stretch">
+        <label htmlFor="color" className="text-sm">
+          Kleur van de header (CSS kleur of hex code):
+        </label>
+        <input
+          id="color"
+          type="text"
+          value={color}
+          onChange={(e) => {
+            setColor(e.target.value);
+          }}
+          className="border border-gray-300 rounded-lg p-2 mt-4"
+          placeholder="Type hier de kleur die je wilt"
+        />
+        <label htmlFor="name" className="text-sm">
+          Naam:
+        </label>
+        <input
+          id="name"
+          type="text"
+          value={name}
+          onChange={(e) => {
+            setName(e.target.value);
+          }}
+          className="border border-gray-300 rounded-lg p-2 mt-4"
+          placeholder="Type hier de naam die je wilt"
+        />
+        <label htmlFor="oldSrc" className="text-sm">
+          Oude SRC (gebruik inspect element op jouw Smartschool pfp):
+        </label>
+        <input
+          id="oldSrc"
+          type="text"
+          value={oldSrc}
+          onChange={(e) => {
+            setOldSrc(e.target.value);
+          }}
+          className="border border-gray-300 rounded-lg p-2 mt-4"
+          placeholder="Plak hier de oude src van je pfp"
+        />
+        <label htmlFor="newSrc" className="text-sm">
+          Nieuwe SRC:
+        </label>
+        <input
+          id="newSrc"
+          type="text"
+          value={newSrc}
+          onChange={(e) => {
+            setNewSrc(e.target.value);
+          }}
+          className="border border-gray-300 rounded-lg p-2 mt-4"
+          placeholder="Plak hier de nieuwe src van je pfp"
+        />
+      </div>
+      <div className="flex flex-row gap-2">
+        <button
+          className="bg-blue-500 text-white px-4 py-2 rounded mt-4"
+          onClick={() => saveSettings()}
+        >
+          Opslaan
+        </button>
+        <button
+          className="bg-red-500 text-white px-4 py-2 rounded mt-4"
+          onClick={() => closeSettings()}
+        >
+          Annuleer
+        </button>
+      </div>
+      <p className="text-xs">
+        Voor sommige instellingen te laten toepassen moet je refreshen
+      </p>
     </div>
   );
 }
