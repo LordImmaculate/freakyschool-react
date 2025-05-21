@@ -12,7 +12,9 @@ Om te installeren heb je een userscript manager nodig. Wij raden TamperMonkey aa
 - [Chrome](https://chromewebstore.google.com/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo)
 - [FireFox](https://addons.mozilla.org/en-US/firefox/addon/tampermonkey/)
 
-Als je dit hebt gedownload ga naar [Releases](https://github.com/LordImmaculate/freakyschool-react/releases) en download de laatste versie.
+Als je dit hebt gedownload ga naar [Releases](https://github.com/LordImmaculate/freakyschool-react/releases) en download de laatste versie
 
 Pas op: als je Chrome gebruikt moet je enkele instellingen wijzigen.
 [Tutorial](https://www.tampermonkey.net/faq.php#Q209)
+
+Je kan op `H` klikken om alle keybinds te zien.
