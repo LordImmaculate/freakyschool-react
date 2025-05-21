@@ -26,9 +26,6 @@ export default function App() {
   refreshUI();
 
   return (
-    <div>
-      <h1 className="text-red-500">Key Press Logger</h1>
-      {settings ? <Settings closeSettings={closeSettings} /> : null}
-    </div>
+    <div>{settings ? <Settings closeSettings={closeSettings} /> : null}</div>
   );
 }
