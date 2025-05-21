@@ -9,16 +9,16 @@ export default function Timer() {
 
   if (!showTimer) return null;
 
-  const timetable = [
-    { start: "08:30", end: "09:20" },
-    { start: "09:20", end: "10:10" },
-    { start: "10:20", end: "11:10" },
-    { start: "11:10", end: "12:00" },
-    { start: "13:00", end: "13:50" },
-    { start: "13:50", end: "14:40" },
-    { start: "14:50", end: "15:40" },
-    { start: "15:40", end: "16:30" }
-  ];
+  const [timetable] = useLocalStorage("timetable", [
+    { id: 1, start: "08:30", end: "09:20" },
+    { id: 2, start: "09:20", end: "10:10" },
+    { id: 3, start: "10:20", end: "11:10" },
+    { id: 4, start: "11:10", end: "12:00" },
+    { id: 5, start: "13:00", end: "13:50" },
+    { id: 6, start: "13:50", end: "14:40" },
+    { id: 7, start: "14:50", end: "15:40" },
+    { id: 8, start: "15:40", end: "16:30" }
+  ]);
 
   function parseTimeToDate(timeStr: string) {
     const [hour, minute] = timeStr.split(":").map(Number);
@@ -58,9 +58,9 @@ export default function Timer() {
       }
       if (currentLesson) {
         const diff = currentLesson.end.getTime() - now.getTime();
-        setTimer(`Time left: ${formatTimeRemaining(diff)}`);
+        setTimer(`Tijd over: ${formatTimeRemaining(diff)}`);
       } else {
-        setTimer("No lesson now");
+        setTimer("Momenteel geen les");
       }
     }, 1000);
 

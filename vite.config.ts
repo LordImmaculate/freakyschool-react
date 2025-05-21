@@ -9,9 +9,14 @@ export default defineConfig({
     monkey({
       entry: "src/main.tsx",
       userscript: {
+        name: "FreakySchool",
         icon: "https://vitejs.dev/logo.svg",
-        namespace: "npm/vite-plugin-monkey",
-        match: ["https://www.google.com/"]
+        namespace: "lordimmaculate",
+        match: ["https://*.smartschool.be/*"],
+        exclude: [
+          "https://*.smartschool.be/?module=Messages&file=composeMessage*",
+          "https://oauth.smartschool.be/*"
+        ]
       },
       build: {
         externalGlobals: {

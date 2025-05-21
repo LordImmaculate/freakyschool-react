@@ -5,10 +5,14 @@ import nameChanger from "./namechanger";
 import { imageChanger } from "./imagechanger";
 import Help from "./Help";
 import Timer from "./Timer";
+import { useLocalStorage } from "usehooks-ts";
 
 export default function App() {
   const [settings, setSettings] = useState(false);
   const [help, setHelp] = useState(false);
+
+  const [showTip, setShowTip] = useLocalStorage("showTip", true);
+  const [backgroundColor] = useLocalStorage("color", "#ff520e");
 
   useEffect(() => {
     const handleKeyPress = (event: { key: string }) => {
@@ -19,6 +23,7 @@ export default function App() {
           setSettings(!settings);
           break;
         case "h":
+          setShowTip(false);
           setHelp(!help);
           break;
         case "Escape":
@@ -52,6 +57,23 @@ export default function App() {
       {settings ? <Settings closeSettings={closeSettings} /> : null}
       {help ? <Help closeHelp={closeHelp} /> : null}
       <Timer />
+      {showTip ? (
+        <div
+          className="fixed bottom-4 right-4 text-white p-4 rounded-lg shadow-lg"
+          style={{ backgroundColor: backgroundColor }}
+        >
+          <h1 className="text-2xl font-bold">Welkom bij FreakySchool</h1>
+          <p className="text-sm">
+            Dankuwel om FreakySchool te installeren, hier zijn tips hoe je
+            FreakySchool gebruikt.
+          </p>
+          <p className="text-sm">Druk op S voor instellingen</p>
+          <p className="text-sm">Druk op H voor hulp</p>
+          <p className="text-sm">
+            Open het hulpmenu om de tips te laten verdwijnen.
+          </p>
+        </div>
+      ) : null}
     </div>
   );
 }

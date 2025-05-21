@@ -35,6 +35,18 @@ export default function Settings({
 
   const [timer, setTimer] = useState(timerValue);
 
+  const [timetableValue, setTimetableValue] = useLocalStorage("timetable", [
+    { id: 1, start: "08:30", end: "09:20" },
+    { id: 2, start: "09:20", end: "10:10" },
+    { id: 3, start: "10:20", end: "11:10" },
+    { id: 4, start: "11:10", end: "12:00" },
+    { id: 5, start: "13:00", end: "13:50" },
+    { id: 6, start: "13:50", end: "14:40" },
+    { id: 7, start: "14:50", end: "15:40" },
+    { id: 8, start: "15:40", end: "16:30" }
+  ]);
+  const [timetable, setTimetable] = useState(timetableValue);
+
   function saveSettings() {
     if (color == "") removeColorValue();
     else setColorValue(color);
@@ -49,6 +61,8 @@ export default function Settings({
     else setNewSrcValue(newSrc);
 
     setTimerValue(timer);
+
+    setTimetableValue(timetable);
 
     closeSettings();
   }
@@ -123,16 +137,49 @@ export default function Settings({
             className="border border-gray-300 rounded-lg p-2 mt-4"
           />
         </div>
+        <span className="text-center">Lessenrooster:</span>
+        <div className="grid grid-cols-2 items-center justify-center gap-0.5">
+          {timetable.map((lesson) => (
+            <div
+              key={lesson.id}
+              className="flex flex-row gap-1 items-center justify-center ml-1"
+            >
+              <span>{lesson.id}</span>
+              <input
+                type="text"
+                value={lesson.start}
+                onChange={(e) => {
+                  const newTimetable = timetable.map((l) =>
+                    l.id === lesson.id ? { ...l, start: e.target.value } : l
+                  );
+                  setTimetable(newTimetable);
+                }}
+                className="border border-gray-300 rounded-lg p-0.5 "
+              />
+              <input
+                type="text"
+                value={lesson.end}
+                onChange={(e) => {
+                  const newTimetable = timetable.map((l) =>
+                    l.id === lesson.id ? { ...l, end: e.target.value } : l
+                  );
+                  setTimetable(newTimetable);
+                }}
+                className="border border-gray-300 rounded-lg p-0.5 "
+              />
+            </div>
+          ))}
+        </div>
       </div>
       <div className="flex flex-row gap-2">
         <button
-          className="bg-blue-500 text-white px-4 py-2 rounded mt-4"
+          className="bg-blue-500 text-white px-4 py-2 rounded-xl mt-4"
           onClick={() => saveSettings()}
         >
           Opslaan
         </button>
         <button
-          className="bg-red-500 text-white px-4 py-2 rounded mt-4"
+          className="bg-red-500 text-white px-4 py-2 rounded-xl mt-4"
           onClick={() => closeSettings()}
         >
           Annuleer

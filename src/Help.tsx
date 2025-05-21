@@ -15,7 +15,7 @@ export default function Help({ closeHelp }: { closeHelp: () => void }) {
         <p>Esc</p>
       </div>
       <button
-        className="bg-red-500 text-white px-4 py-2 rounded mt-4"
+        className="bg-red-500 text-white px-4 py-2 rounded-xl mt-4"
         onClick={() => closeHelp()}
       >
         Sluit
