@@ -3,7 +3,7 @@ import Settings from "./Settings";
 import headerColor from "./headercolor";
 import nameChanger from "./namechanger";
 import { imageChanger } from "./imagechanger";
-import Help from "./Help";
+import Hulp from "./Hulp";
 import Timer from "./Timer";
 import { useLocalStorage } from "usehooks-ts";
 
@@ -55,7 +55,7 @@ export default function App() {
   return (
     <div>
       {settings ? <Settings closeSettings={closeSettings} /> : null}
-      {help ? <Help closeHelp={closeHelp} /> : null}
+      {help ? <Hulp closeHelp={closeHelp} /> : null}
       <Timer />
       {showTip ? (
         <div

@@ -1,9 +1,9 @@
 import Menu from "./components/Menu";
 
-export default function Help({ closeHelp }: { closeHelp: () => void }) {
+export default function Hulp({ closeHelp }: { closeHelp: () => void }) {
   return (
     <Menu>
-      <h1 className="text-3xl font-bold">Help</h1>
+      <h1 className="text-3xl font-bold">Hulp</h1>
       <div className="grid grid-cols-2 gap-4 items-center">
         <p className="text-sm font-bold">Actie</p>
         <p className="text-sm font-bold">Toets</p>
