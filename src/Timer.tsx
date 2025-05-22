@@ -48,6 +48,7 @@ export default function Timer() {
     const interval = setInterval(() => {
       const now = new Date();
       let currentLesson = null;
+      let nextLesson = null;
       for (const lesson of timetable) {
         const startDate = parseTimeToDate(lesson.start);
         const endDate = parseTimeToDate(lesson.end);
@@ -55,12 +56,19 @@ export default function Timer() {
           currentLesson = { start: startDate, end: endDate };
           break;
         }
+        if (now < startDate) {
+          nextLesson = { start: startDate, end: endDate };
+          break;
+        }
       }
       if (currentLesson) {
         const diff = currentLesson.end.getTime() - now.getTime();
         setTimer(`Tijd over: ${formatTimeRemaining(diff)}`);
+      } else if (nextLesson) {
+        const diff = nextLesson.start.getTime() - now.getTime();
+        setTimer(`Volgende les in: ${formatTimeRemaining(diff)}`);
       } else {
-        setTimer("Momenteel geen les");
+        setTimer("Geen lessen meer vandaag");
       }
     }, 1000);
 
@@ -69,10 +77,10 @@ export default function Timer() {
 
   return (
     <div
-      className="fixed bottom-10 left-10 text-white text-2xl p-4 rounded-lg shadow-lg"
+      className="fixed bottom-10 left-10 text-white text-2xl p-4 rounded-lg shadow-lg shadow-black/50 backdrop-blur-sm bg-opacity-50"
       style={{ backgroundColor: backgroundColor }}
     >
-      {timer}
+      {timer == "" ? "Laden..." : timer}
     </div>
   );
 }

@@ -6,6 +6,7 @@ import { imageChanger } from "./imagechanger";
 import Hulp from "./Hulp";
 import Timer from "./Timer";
 import { useLocalStorage } from "usehooks-ts";
+import { uploadZoneImgDelete } from "./uploadZoneImgDelete";
 
 export default function App() {
   const [settings, setSettings] = useState(false);
@@ -65,6 +66,7 @@ export default function App() {
   headerColor();
   nameChanger();
   imageChanger();
+  uploadZoneImgDelete();
 
   return (
     <div>
