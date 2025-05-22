@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-export function uploadZoneImgDelete() {
+export function useUploadZoneImgDelete() {
   useEffect(() => {
     function removeImages() {
       const imagesCollection =
@@ -21,7 +21,9 @@ export function uploadZoneImgDelete() {
 
     observer.observe(document.body, {
       childList: true,
-      subtree: true
+      subtree: true,
     });
   }, []);
 }
+
+
