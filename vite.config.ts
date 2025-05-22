@@ -14,6 +14,7 @@ export default defineConfig({
       userscript: {
         name: "FreakySchool",
         author: "LordImmaculate, Babstiaan",
+        version: "1.2.0",
         source: "https://github.com/lordimmaculate/freakyschool-react",
         icon: "https://vitejs.dev/logo.svg",
         namespace: "lordimmaculate",
