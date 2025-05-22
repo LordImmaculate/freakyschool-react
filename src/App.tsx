@@ -20,11 +20,25 @@ export default function App() {
 
       switch (event.key) {
         case "s":
+        case "S":
           setSettings(!settings);
           break;
         case "h":
+        case "H":
           setShowTip(false);
           setHelp(!help);
+          break;
+        case "r":
+        case "R":
+          window.location.href = "/results/main/results";
+          break;
+        case "p":
+        case "P":
+          window.location.href = "/planner";
+          break;
+        case "b":
+        case "B":
+          window.location.href = "/?module=Messages";
           break;
         case "Escape":
           setSettings(false);

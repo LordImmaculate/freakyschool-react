@@ -13,6 +13,12 @@ export default function Hulp({ closeHelp }: { closeHelp: () => void }) {
         <p>H</p>
         <p>Sluit Menu</p>
         <p>Esc</p>
+        <p>Open Resultaten</p>
+        <p>R</p>
+        <p>Open Planner</p>
+        <p>P</p>
+        <p>Open Berichten</p>
+        <p>B</p>
       </div>
       <button
         className="bg-red-500 text-white px-4 py-2 rounded-xl mt-4"

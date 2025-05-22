@@ -18,6 +18,9 @@ export default defineConfig({
         exclude: [
           "https://*.smartschool.be/?module=Messages&file=composeMessage*",
           "https://oauth.smartschool.be/*"
+        ],
+        require: [
+          "https://update.greasyfork.org/scripts/481384/1565312/Grid%20Smartschool.js"
         ]
       },
       build: {
