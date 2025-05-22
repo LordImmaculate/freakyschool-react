@@ -146,7 +146,7 @@ export default function Settings({
             >
               <span>{lesson.id}</span>
               <input
-                type="text"
+                type="time"
                 value={lesson.start}
                 onChange={(e) => {
                   const newTimetable = timetable.map((l) =>
@@ -157,7 +157,7 @@ export default function Settings({
                 className="border border-gray-300 rounded-lg p-0.5 "
               />
               <input
-                type="text"
+                type="time"
                 value={lesson.end}
                 onChange={(e) => {
                   const newTimetable = timetable.map((l) =>
