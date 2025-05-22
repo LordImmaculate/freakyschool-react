@@ -17,8 +17,19 @@ export default function App() {
   const [backgroundColor] = useLocalStorage("color", "#ff520e");
 
   useEffect(() => {
-    const handleKeyPress = (event: { key: string }) => {
+    const handleKeyPress = (event: KeyboardEvent) => {
       if (help || settings) return;
+
+      const target = event.target as HTMLElement;
+      if (
+        target.tagName === "INPUT" ||
+        target.tagName === "TEXTAREA" ||
+        target.isContentEditable ||
+        help ||
+        settings
+      ) {
+        return;
+      }
 
       switch (event.key) {
         case "s":
