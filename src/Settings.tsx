@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useLocalStorage } from "usehooks-ts";
 import Menu from "./components/Menu";
+import Input from "./components/Input";
 
 export default function Settings({
   closeSettings
@@ -35,10 +36,6 @@ export default function Settings({
 
   const [timer, setTimer] = useState(timerValue);
 
-  const [darkModeValue, setDarkModeValue] = useLocalStorage("darkMode", false);
-
-  const [darkMode, setDarkMode] = useState(darkModeValue);
-
   const [timetableValue, setTimetableValue] = useLocalStorage("timetable", [
     { id: 1, start: "08:30", end: "09:20" },
     { id: 2, start: "09:20", end: "10:10" },
@@ -65,7 +62,6 @@ export default function Settings({
     else setNewSrcValue(newSrc);
 
     setTimerValue(timer);
-    setDarkModeValue(darkMode);
     setTimetableValue(timetable);
 
     closeSettings();
@@ -75,56 +71,27 @@ export default function Settings({
     <Menu>
       <h1 className="text-2xl font-bold">FreakySchool Instellingen</h1>
       <div className="flex flex-col gap-1 items-stretch">
-        <label htmlFor="color" className="text-sm">
-          Kleur van de header (CSS kleur of hex code):
-        </label>
-        <input
-          id="color"
-          type="text"
+        <Input
           value={color}
-          onChange={(e) => {
-            setColor(e.target.value);
-          }}
-          className="border border-gray-300 rounded-lg p-2 mt-4"
-          placeholder="Type hier de kleur die je wilt"
+          setValue={setColor}
+          label="Kleur (gebruik inspect element op jouw Smartschool pfp):"
+          placeholder="Gebruik een hex kleurcode of een CSS kleur"
         />
-        <label htmlFor="name" className="text-sm">
-          Naam:
-        </label>
-        <input
-          id="name"
-          type="text"
+        <Input
           value={name}
-          onChange={(e) => {
-            setName(e.target.value);
-          }}
-          className="border border-gray-300 rounded-lg p-2 mt-4"
-          placeholder="Type hier de naam die je wilt"
+          setValue={setName}
+          label="Naam (gebruik inspect element op jouw Smartschool pfp):"
         />
-        <label htmlFor="oldSrc" className="text-sm">
-          Oude SRC (gebruik inspect element op jouw Smartschool pfp):
-        </label>
-        <input
-          id="oldSrc"
-          type="text"
+        <Input
           value={oldSrc}
-          onChange={(e) => {
-            setOldSrc(e.target.value);
-          }}
-          className="border border-gray-300 rounded-lg p-2 mt-4"
+          setValue={setOldSrc}
+          label="Oude SRC (gebruik inspect element op jouw Smartschool pfp):"
           placeholder="Plak hier de oude src van je pfp"
         />
-        <label htmlFor="newSrc" className="text-sm">
-          Nieuwe SRC:
-        </label>
-        <input
-          id="newSrc"
-          type="text"
+        <Input
           value={newSrc}
-          onChange={(e) => {
-            setNewSrc(e.target.value);
-          }}
-          className="border border-gray-300 rounded-lg p-2 mt-4"
+          setValue={setNewSrc}
+          label="Nieuwe SRC (gebruik inspect element op jouw Smartschool pfp):"
           placeholder="Plak hier de nieuwe src van je pfp"
         />
         <div className="flex flex-row gap-1 items-center">
@@ -138,26 +105,12 @@ export default function Settings({
             onClick={() => {
               setTimer(!timer);
             }}
-            className="border border-gray-300 rounded-lg p-2 mt-4"
+            className="border border-gray-300 rounded-lg p-2 mt-4 text-white"
           />
         </div>
         <span className="text-sm ml-2 text-gray-500">
           De timer is niet zichtbaar tijdens het weekend
         </span>
-        <div className="flex flex-row gap-1 items-center">
-          <label htmlFor="darkMode" className="text-sm">
-            Donkere modus:
-          </label>
-          <input
-            id="darkMode"
-            type="button"
-            value={darkMode ? "Aan" : "Uit"}
-            onClick={() => {
-              setDarkMode(!darkMode);
-            }}
-            className="border border-gray-300 rounded-lg p-2 mt-4"
-          />
-        </div>
         <span className="text-center">Lessenrooster:</span>
         <div className="grid grid-cols-2 items-center justify-center gap-0.5">
           {timetable.map((lesson) => (
