@@ -21,7 +21,10 @@ export default defineConfig({
         match: ["https://*.smartschool.be/*"],
         exclude: [
           "https://*.smartschool.be/?module=Messages&file=composeMessage*",
-          "https://oauth.smartschool.be/*"
+          "https://*.smartschool.be/login*",
+          "https://*.smartschool.be/2fa*",
+          "https://oauth.smartschool.be/*",
+          "https://wopi1.smartschool.be/*"
         ],
         require: [
           "https://update.greasyfork.org/scripts/481384/1565312/Grid%20Smartschool.js"
@@ -37,5 +40,12 @@ export default defineConfig({
         }
       }
     })
-  ]
+  ],
+  server: {
+    // Essential for HMR in some environments, especially if you have issues
+    // with file watching (e.g., WSL2, shared drives)
+    watch: {
+      usePolling: true
+    }
+  }
 });
