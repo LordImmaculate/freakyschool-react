@@ -1,5 +1,7 @@
 # FreakySchool voor SmartSchool
 
+[![Download - Hier](https://img.shields.io/badge/Download-Hier-rebeccapurple?style=for-the-badge)](https://raw.githubusercontent.com/lordimmaculate/freakyschool-react/main/dist/freaky-school.user.js)
+
 Dit userscript voegt enkele handige features toe aan SmartSchool waaronder:
 
 - Header kleur veranderen
