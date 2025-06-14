@@ -35,6 +35,10 @@ export default function Settings({
 
   const [timer, setTimer] = useState(timerValue);
 
+  const [darkModeValue, setDarkModeValue] = useLocalStorage("darkMode", false);
+
+  const [darkMode, setDarkMode] = useState(darkModeValue);
+
   const [timetableValue, setTimetableValue] = useLocalStorage("timetable", [
     { id: 1, start: "08:30", end: "09:20" },
     { id: 2, start: "09:20", end: "10:10" },
@@ -61,7 +65,7 @@ export default function Settings({
     else setNewSrcValue(newSrc);
 
     setTimerValue(timer);
-
+    setDarkModeValue(darkMode);
     setTimetableValue(timetable);
 
     closeSettings();
@@ -133,6 +137,20 @@ export default function Settings({
             value={timer ? "Aan" : "Uit"}
             onClick={() => {
               setTimer(!timer);
+            }}
+            className="border border-gray-300 rounded-lg p-2 mt-4"
+          />
+        </div>
+        <div className="flex flex-row gap-1 items-center">
+          <label htmlFor="darkMode" className="text-sm">
+            Donkere modus:
+          </label>
+          <input
+            id="darkMode"
+            type="button"
+            value={darkMode ? "Aan" : "Uit"}
+            onClick={() => {
+              setDarkMode(!darkMode);
             }}
             className="border border-gray-300 rounded-lg p-2 mt-4"
           />
