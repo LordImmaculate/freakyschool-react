@@ -7,6 +7,11 @@ export default defineConfig({
   build: {
     minify: true
   },
+  server: {
+    watch: {
+      usePolling: true
+    }
+  },
   plugins: [
     react(),
     monkey({
@@ -28,8 +33,7 @@ export default defineConfig({
         ],
         require: [
           "https://update.greasyfork.org/scripts/481384/1565312/Grid%20Smartschool.js"
-        ],
-        "run-at": "document-start"
+        ]
       },
       build: {
         externalGlobals: {
@@ -42,8 +46,7 @@ export default defineConfig({
       },
       server: {
         // 👇 Enables HMR via auto-update in Tampermonkey
-        mountGmApi: true,
-        open: true // optional, opens browser
+        mountGmApi: true
       }
     })
   ]

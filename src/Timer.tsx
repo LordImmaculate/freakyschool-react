@@ -44,6 +44,12 @@ export default function Timer() {
       .padStart(2, "0")}`;
   }
 
+  const date = new Date();
+
+  if (date.getDay() === 0 || date.getDay() === 6) {
+    return;
+  }
+
   useEffect(() => {
     const interval = setInterval(() => {
       const now = new Date();

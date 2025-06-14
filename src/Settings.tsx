@@ -141,6 +141,9 @@ export default function Settings({
             className="border border-gray-300 rounded-lg p-2 mt-4"
           />
         </div>
+        <span className="text-sm ml-2 text-gray-500">
+          De timer is niet zichtbaar tijdens het weekend
+        </span>
         <div className="flex flex-row gap-1 items-center">
           <label htmlFor="darkMode" className="text-sm">
             Donkere modus:
