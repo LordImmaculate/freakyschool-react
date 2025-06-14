@@ -21,6 +21,8 @@ export default defineConfig({
         author: "LordImmaculate, Babstiaan",
         version: "1.3.0",
         source: "https://github.com/lordimmaculate/freakyschool-react",
+        updateURL:
+          "https://raw.githubusercontent.com/lordimmaculate/freakyschool-react/main/dist/freaky-school.user.js",
         icon: "https://vitejs.dev/logo.svg",
         namespace: "lordimmaculate",
         match: ["https://*.smartschool.be/*"],
