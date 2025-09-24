@@ -5,7 +5,7 @@ import monkey, { cdn } from "vite-plugin-monkey";
 // https://vitejs.dev/config/
 export default defineConfig({
   build: {
-    minify: true
+    minify: false
   },
   server: {
     watch: {
@@ -38,15 +38,6 @@ export default defineConfig({
         require: [
           "https://update.greasyfork.org/scripts/481384/1565312/Grid%20Smartschool.js"
         ]
-      },
-      build: {
-        externalGlobals: {
-          react: cdn.jsdelivr("React", "umd/react.production.min.js"),
-          "react-dom": cdn.jsdelivr(
-            "ReactDOM",
-            "umd/react-dom.production.min.js"
-          )
-        }
       },
       server: {
         // 👇 Enables HMR via auto-update in Tampermonkey
