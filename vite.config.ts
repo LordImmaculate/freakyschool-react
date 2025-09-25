@@ -1,6 +1,6 @@
 import react from "@vitejs/plugin-react";
 import { defineConfig } from "vite";
-import monkey, { cdn } from "vite-plugin-monkey";
+import monkey from "vite-plugin-monkey";
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -19,7 +19,7 @@ export default defineConfig({
       userscript: {
         name: "FreakySchool",
         author: "LordImmaculate, Babstiaan",
-        version: "1.3.0",
+        version: "1.4.0",
         source: "https://github.com/lordimmaculate/freakyschool-react",
         downloadURL:
           "https://raw.githubusercontent.com/lordimmaculate/freakyschool-react/main/dist/freaky-school.user.js",

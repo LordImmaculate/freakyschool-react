@@ -48,6 +48,19 @@ export default function Settings({
   ]);
   const [timetable, setTimetable] = useState(timetableValue);
 
+  const [timetableDaysValue, setTimetableDaysValue] = useLocalStorage(
+    "timetableDays",
+    [
+      { dag: "Maandag", start: "1", eind: "8" },
+      { dag: "Dinsdag", start: "1", eind: "8" },
+      { dag: "Woensdag", start: "1", eind: "4" },
+      { dag: "Donderdag", start: "1", eind: "8" },
+      { dag: "Vrijdag", start: "1", eind: "8" }
+    ]
+  );
+
+  const [timetableDays, setTimetableDays] = useState(timetableDaysValue);
+
   function saveSettings() {
     if (color == "") removeColorValue();
     else setColorValue(color);
@@ -63,6 +76,7 @@ export default function Settings({
 
     setTimerValue(timer);
     setTimetableValue(timetable);
+    setTimetableDaysValue(timetableDays);
 
     closeSettings();
   }
@@ -74,14 +88,10 @@ export default function Settings({
         <Input
           value={color}
           setValue={setColor}
-          label="Kleur (gebruik inspect element op jouw Smartschool pfp):"
+          label="Kleur:"
           placeholder="Gebruik een hex kleurcode of een CSS kleur"
         />
-        <Input
-          value={name}
-          setValue={setName}
-          label="Naam (gebruik inspect element op jouw Smartschool pfp):"
-        />
+        <Input value={name} setValue={setName} label="Naam" />
         <Input
           value={oldSrc}
           setValue={setOldSrc}
@@ -91,7 +101,7 @@ export default function Settings({
         <Input
           value={newSrc}
           setValue={setNewSrc}
-          label="Nieuwe SRC (gebruik inspect element op jouw Smartschool pfp):"
+          label="Nieuwe SRC:"
           placeholder="Plak hier de nieuwe src van je pfp"
         />
         <div className="flex flex-row gap-1 items-center">
@@ -105,7 +115,7 @@ export default function Settings({
             onClick={() => {
               setTimer(!timer);
             }}
-            className="border border-gray-300 rounded-lg p-2 mt-4 text-white"
+            className="border border-white rounded-lg p-2 mt-4 !text-white"
           />
         </div>
         <span className="text-sm ml-2 text-gray-500">
@@ -128,7 +138,7 @@ export default function Settings({
                   );
                   setTimetable(newTimetable);
                 }}
-                className="border border-gray-300 rounded-lg p-0.5 "
+                className="border border-gray-300 rounded-lg p-0.5 !text-white"
               />
               <input
                 type="time"
@@ -139,7 +149,25 @@ export default function Settings({
                   );
                   setTimetable(newTimetable);
                 }}
-                className="border border-gray-300 rounded-lg p-0.5 "
+                className="border border-gray-300 rounded-lg p-0.5 !text-white"
+              />
+            </div>
+          ))}
+        </div>
+        <div className="flex flex-row">
+          {timetableDays.map((day) => (
+            <div className="flex flex-col">
+              <label htmlFor={day.dag}> {day.dag}:</label>
+              <input
+                type="select"
+                value={lesson.end}
+                onChange={(e) => {
+                  const newTimetable = timetable.map((l) =>
+                    l.id === lesson.id ? { ...l, end: e.target.value } : l
+                  );
+                  setTimetable(newTimetable);
+                }}
+                className="border border-gray-300 rounded-lg p-0.5 !text-white"
               />
             </div>
           ))}
