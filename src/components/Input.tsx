@@ -24,7 +24,7 @@ export default function Input({
         onChange={(e) => {
           setValue(e.target.value);
         }}
-        className="border border-gray-300 !dark:text-white dark:placeholder-white rounded-lg p-2 mt-4"
+        className="border border-gray-300 !text-white placeholder-white rounded-lg p-2 mt-4"
         placeholder={placeholder}
       />
     </>

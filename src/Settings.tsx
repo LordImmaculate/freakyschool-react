@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useLocalStorage } from "usehooks-ts";
 import Menu from "./components/Menu";
 import Input from "./components/Input";
@@ -48,19 +48,6 @@ export default function Settings({
   ]);
   const [timetable, setTimetable] = useState(timetableValue);
 
-  const [timetableDaysValue, setTimetableDaysValue] = useLocalStorage(
-    "timetableDays",
-    [
-      { dag: "Maandag", start: "1", eind: "8" },
-      { dag: "Dinsdag", start: "1", eind: "8" },
-      { dag: "Woensdag", start: "1", eind: "4" },
-      { dag: "Donderdag", start: "1", eind: "8" },
-      { dag: "Vrijdag", start: "1", eind: "8" }
-    ]
-  );
-
-  const [timetableDays, setTimetableDays] = useState(timetableDaysValue);
-
   function saveSettings() {
     if (color == "") removeColorValue();
     else setColorValue(color);
@@ -76,7 +63,6 @@ export default function Settings({
 
     setTimerValue(timer);
     setTimetableValue(timetable);
-    setTimetableDaysValue(timetableDays);
 
     closeSettings();
   }
@@ -142,24 +128,6 @@ export default function Settings({
               />
               <input
                 type="time"
-                value={lesson.end}
-                onChange={(e) => {
-                  const newTimetable = timetable.map((l) =>
-                    l.id === lesson.id ? { ...l, end: e.target.value } : l
-                  );
-                  setTimetable(newTimetable);
-                }}
-                className="border border-gray-300 rounded-lg p-0.5 !text-white"
-              />
-            </div>
-          ))}
-        </div>
-        <div className="flex flex-row">
-          {timetableDays.map((day) => (
-            <div className="flex flex-col">
-              <label htmlFor={day.dag}> {day.dag}:</label>
-              <input
-                type="select"
                 value={lesson.end}
                 onChange={(e) => {
                   const newTimetable = timetable.map((l) =>
