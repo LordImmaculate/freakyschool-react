@@ -101,7 +101,7 @@ export default function Settings({
             onClick={() => {
               setTimer(!timer);
             }}
-            className="border border-white rounded-lg p-2 mt-4 !text-white"
+            className="border border-white rounded-lg p-2 mt-4 dark:!text-white"
           />
         </div>
         <span className="text-sm ml-2 text-gray-500">
@@ -124,7 +124,7 @@ export default function Settings({
                   );
                   setTimetable(newTimetable);
                 }}
-                className="border border-gray-300 rounded-lg p-0.5 !text-white"
+                className="border border-gray-300 rounded-lg p-0.5 dark:!text-white"
               />
               <input
                 type="time"
@@ -135,7 +135,7 @@ export default function Settings({
                   );
                   setTimetable(newTimetable);
                 }}
-                className="border border-gray-300 rounded-lg p-0.5 !text-white"
+                className="border border-gray-300 rounded-lg p-0.5 dark:!text-white"
               />
             </div>
           ))}
