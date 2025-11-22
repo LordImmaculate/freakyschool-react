@@ -13,7 +13,7 @@ export default function Input({
   return (
     <>
       {label && (
-        <label htmlFor={id} className="text-sm">
+        <label htmlFor={id} className="text-sm text-gray-900 dark:text-white">
           {label}
         </label>
       )}
@@ -24,7 +24,7 @@ export default function Input({
         onChange={(e) => {
           setValue(e.target.value);
         }}
-        className="border border-gray-300 placeholder-white rounded-lg p-2 mt-4 dark:!text-white"
+        className="border border-gray-300 placeholder-gray-400 dark:placeholder-gray-500 rounded-lg p-2 mt-4 text-gray-900 dark:!text-white"
         placeholder={placeholder}
       />
     </>

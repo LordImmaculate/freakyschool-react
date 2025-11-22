@@ -91,7 +91,7 @@ export default function Settings({
           placeholder="Plak hier de nieuwe src van je pfp"
         />
         <div className="flex flex-row gap-1 items-center">
-          <label htmlFor="timer" className="text-sm">
+          <label htmlFor="timer" className="text-sm text-gray-900 dark:text-white">
             Timer:
           </label>
           <input
@@ -104,17 +104,17 @@ export default function Settings({
             className="border border-white rounded-lg p-2 mt-4 dark:!text-white"
           />
         </div>
-        <span className="text-sm ml-2 text-gray-500">
+        <span className="text-sm ml-2 text-gray-600 dark:text-gray-400">
           De timer is niet zichtbaar tijdens het weekend
         </span>
-        <span className="text-center">Lessenrooster:</span>
+        <span className="text-center text-gray-900 dark:text-white">Lessenrooster:</span>
         <div className="grid grid-cols-2 items-center justify-center gap-0.5">
           {timetable.map((lesson) => (
             <div
               key={lesson.id}
               className="flex flex-row gap-1 items-center justify-center ml-1"
             >
-              <span>{lesson.id}</span>
+              <span className="text-gray-900 dark:text-white">{lesson.id}</span>
               <input
                 type="time"
                 value={lesson.start}
@@ -155,7 +155,7 @@ export default function Settings({
           Annuleer
         </button>
       </div>
-      <p className="text-xs">
+      <p className="text-xs text-gray-600 dark:text-gray-400">
         Voor sommige instellingen te laten toepassen moet je refreshen
       </p>
     </Menu>
