@@ -19,7 +19,7 @@ export default defineConfig({
       userscript: {
         name: "FreakySchool",
         author: "LordImmaculate, Babstiaan",
-        version: "1.6.0",
+        version: "1.6.1",
         source: "https://github.com/lordimmaculate/freakyschool-react",
         downloadURL:
           "https://raw.githubusercontent.com/lordimmaculate/freakyschool-react/main/dist/freaky-school.user.js",
