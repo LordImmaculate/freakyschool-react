@@ -1,3 +1,5 @@
+# MOVED TO [CODEBERG](https://codeberg.org/LordImmaculate/freakyschool-react)
+
 # FreakySchool voor Smartschool
 
 [![Download - Hier](https://img.shields.io/badge/Download-Hier-rebeccapurple?style=for-the-badge)](https://raw.githubusercontent.com/lordimmaculate/freakyschool-react/main/dist/freaky-school.user.js)
